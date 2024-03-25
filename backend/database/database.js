@@ -1,0 +1,21 @@
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+
+dotenv.config();
+
+const { MONGO_URI } = process.env;
+
+
+const initDB = () => {
+    mongoose.connect(MONGO_URI, {
+        authSource: "admin",
+    });
+
+    const db = mongoose.connection;
+    db.on("error", console.error.bind(console, "Error de conexión a MongoDB:"));
+    db.once("open", () => {
+        console.log("Conexión exitosa a MongoDB");
+    });
+};
+
+module.exports = { initDB };
