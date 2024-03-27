@@ -11,6 +11,14 @@ app.use(express.json());
 app.use(cors());
 db.initDB();
 
+app.get('/', (req, res) => {
+    res.send('Home');
+});
+
+app.get('/test', async (req, res) => {
+    res.send('Test');
+});
+
 app.listen(PORT, () => {
     console.log(`Server listening on ${URL}:${PORT}`);
 });
