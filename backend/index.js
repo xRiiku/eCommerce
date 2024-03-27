@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     res.send('Home');
 });
 
-app.get('/test', async (req, res) => {
+app.get('/test', (req, res) => {
     res.send('Test');
 });
 
