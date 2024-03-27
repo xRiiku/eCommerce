@@ -6,7 +6,7 @@ dotenv.config();
 const { MONGO_URI } = process.env;
 
 
-const initDB = () => {
+export const initDB = () => {
     mongoose.connect(MONGO_URI, {
         authSource: "admin",
     });
@@ -17,5 +17,3 @@ const initDB = () => {
         console.log("Conexión exitosa a MongoDB");
     });
 };
-
-export default { initDB };

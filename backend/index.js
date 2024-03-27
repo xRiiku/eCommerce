@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
-import db from './database/database.js';
+import {initDB} from './database/database.js';
 
 import userRoutes from './routes/user.route.js'
 import authRoutes  from './routes/auth.route.js'
@@ -16,7 +16,7 @@ dotenv.config()
 app.use(express.json());
 app.use(cookieParser())
 app.use(cors());
-db.initDB();
+initDB();
 
 app.use("/user", userRoutes)
 app.use("/auth", authRoutes)
