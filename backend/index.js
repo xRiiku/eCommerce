@@ -13,7 +13,7 @@ const PORT = 3001;
 const URL = process.env.URL || 'http://localhost';
 
 dotenv.config()
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI) // datos de la base de datos en el archivo .env, variable MONGO
 .then(()=>{
     console.log("Connected to MongoDB")
 })
