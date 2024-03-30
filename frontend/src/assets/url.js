@@ -1,0 +1,1 @@
+export const URL = "https://e-commerce-rust-nu.vercel.app"
