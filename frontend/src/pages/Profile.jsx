@@ -116,14 +116,6 @@ export default function Profile() {
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      {/* 
-      FIREBASE STORAGE RULES
-
-      allow read;
-      allow write: if
-      request.resource.size < 2 * 1024 * 1024 &&
-      request.resource.contentType.matches('image/.*');
-       */}
       <input type='file' ref={fileRef} hidden accept='image/*' onChange={(e) => setImage(e.target.files[0])}/>
       {/* files[0] para utilizar solo la primera imagen en caso de que el usuario suba más de una */}
         <img 
@@ -133,9 +125,6 @@ export default function Profile() {
           onClick={() => fileRef.current.click()}
           />
           <p className='text-sm self-center'> 
-          {/*  Si hay error en la subida de la imagen, mostrará error*/}
-          {/* Si el % del progreso de subida está entre 0 y 100 mostrará el progreso */}
-          {/* Si el progreso de subida es 100 mostrará que se ha subido correctamente */}
             {imageError ? (
               <span className='text-red-500'>Error uploading image (FileSize must be less than 2 MB)</span>) : imagePercent > 0 && imagePercent < 100 ? (
                 <span className='text-slate-700'>{`Uploading: ${imagePercent} %`}</span>) : imagePercent === 100 ? (

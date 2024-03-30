@@ -13,8 +13,6 @@ export default function SignUp() {
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.id]: e.target.value}) 
-    //mantenemos el valor que haya en formData con el spread operator y le añadimos el nuevo valor
-    //con e.target.id obtenemos el valor segun id (username) y con e.target.value obtenemos el valor de ese id (Username)
   }
 
   const handleSubmit = async (e) => {

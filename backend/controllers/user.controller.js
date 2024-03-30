@@ -2,17 +2,10 @@ import User from '../models/user.model.js'
 import { errorHandler } from '../utils/error.js'
 import bcryptjs from 'bcryptjs'
 
-export const test = (req, res) => {
-    res.json({
-        message: 'API is working!'
-    })
-}
-
 //Update user
 
 export const updateUser = async (req, res, next) => {
-    if (req.user.id !== req.params.id){ //Si las id del usuario y del token no coinciden, devolverá un error
-        //Esto es para que nadie pueda cambiar los datos de usuario de otro usuario que no sea el suyo propio.
+    if (req.user.id !== req.params.id){
         return next(errorHandler(401, 'You can update only your account!'))
     }
     try{

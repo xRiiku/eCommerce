@@ -13,7 +13,7 @@ const PORT = 3001;
 const URL = process.env.URL || 'http://localhost';
 
 dotenv.config()
-mongoose.connect(process.env.MONGO_URI) // datos de la base de datos en el archivo .env, variable MONGO
+mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
     console.log("Connected to MongoDB")
 })
@@ -36,7 +36,7 @@ app.listen(PORT, () => {
     console.log(`Server listening on ${URL}:${PORT}`);
 });
 
-/* Creamos un middleWare para el manejo de errores */
+/* middleWare para el manejo de errores */
 app.use((err, req, res, next)=>{
     const statusCode = err.statusCode || 500
     const message = err.message || 'Internal Server Error'
