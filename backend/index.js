@@ -21,9 +21,23 @@ mongoose.connect(process.env.MONGO_URI)
     console.log(err)
 })
 
+const allowedOrigins = ['http://localhost:5173', 'https://eCommerce.rikudev.com', 'https://e-commerce-rust-nu.vercel.app'];
+
+const corsOptions = {
+  origin: function(origin, callback) {
+    // Verificar si el origen de la solicitud está en la lista permitida
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+},
+  credentials: true, // Permitir credenciales
+}
+
 app.use(express.json());
 app.use(cookieParser())
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use("/user", userRoutes)
 app.use("/auth", authRoutes)
