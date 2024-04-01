@@ -25,13 +25,12 @@ app.listen(PORT, () => {
 app.use("/user", userRoutes)
 app.use("/auth", authRoutes)
 
-/* middleWare para el manejo de errores */
-app.use((err, req, res, next)=>{
-    const statusCode = err.statusCode || 500
-    const message = err.message || 'Internal Server Error'
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error';
     return res.status(statusCode).json({
         success: false,
-        error: message,
-        statusCode: statusCode
-    })
-})
+        message,
+        statusCode,
+    });
+});
