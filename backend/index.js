@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
 
 import userRoutes from './routes/user.route.js'
 import authRoutes  from './routes/auth.route.js'
@@ -8,6 +9,7 @@ import db from './db/db.js'
 
 
 const app = express();
+dotenv.config();
 const PORT = 3001;
 const URL = process.env.URL || 'http://localhost';
 
