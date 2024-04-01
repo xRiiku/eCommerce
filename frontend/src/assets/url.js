@@ -1,1 +1,3 @@
-export const URL = "https://e-commerce-rust-nu.vercel.app"
+export const URL = "http://localhost:3001" 
+
+//"https://e-commerce-rust-nu.vercel.app"

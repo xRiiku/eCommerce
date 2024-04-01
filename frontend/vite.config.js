@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server:{
     proxy:{
-      '../backend': 
+      '/api': 
       {
-        target: 'http://localhost:3001' || 'https://e-commerce-rust-nu.vercel.app',
+        target: 'http://localhost:3001',
         secure: false
       },
     },
