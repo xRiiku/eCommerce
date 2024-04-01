@@ -3,9 +3,6 @@ import userReducer from './user/userSlice.js'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-/* Utilizamos redux-persist para que al iniciar sesión el usuario, se guarde la información
-y no tenga que iniciar sesión cada vez que actualiza la página */
-
 const rootReducer = combineReducers({user: userReducer})
 
 const persistConfig = {

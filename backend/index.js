@@ -18,12 +18,12 @@ app.use(cookieParser())
 app.use(cors());
 db.initDB();
 
-app.use("/user", userRoutes)
-app.use("/auth", authRoutes)
-
 app.listen(PORT, () => {
     console.log(`Server listening on ${URL}:${PORT}`);
 });
+
+app.use("/user", userRoutes)
+app.use("/auth", authRoutes)
 
 /* middleWare para el manejo de errores */
 app.use((err, req, res, next)=>{
@@ -31,7 +31,7 @@ app.use((err, req, res, next)=>{
     const message = err.message || 'Internal Server Error'
     return res.status(statusCode).json({
         success: false,
-        message,
+        error: message,
         statusCode: statusCode
     })
 })
