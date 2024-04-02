@@ -72,6 +72,7 @@ export default function Profile() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
+        credentials: 'include',
       });
       const data = await res.json();
       if (data.success === false) {
@@ -90,6 +91,7 @@ export default function Profile() {
       dispatch(deleteUserStart());
       const res = await fetch(`${URL}/user/delete/${currentUser._id}`, {
         method: 'DELETE',
+        credentials: 'include',
       });
       const data = await res.json();
       if (data.success === false) {
@@ -104,7 +106,9 @@ export default function Profile() {
 
   const handleSignOut = async () => {
     try {
-      await fetch(`${URL}/auth/signout`);
+      await fetch(`${URL}/auth/signout`, {
+        credentials: 'include',
+      });
       dispatch(signOut())
     } catch (error) {
       console.log(error);
