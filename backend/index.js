@@ -12,12 +12,20 @@ const app = express();
 dotenv.config();
 const PORT = 3001;
 const URL = process.env.URL || 'http://localhost';
+const allowedOrigins = ['http://localhost:5173', 'http://localhost:3001', 'https://e-commerce-rust-nu.vercel.app'];
 
 app.use(express.json());
 app.use(cookieParser())
 app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
+    origin: function(origin, callback) {
+      // Permitir solicitudes si el origen está en la lista de orígenes permitidos o si no se proporciona origen (solicitud no CORS)
+        if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        } else {
+        callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true // Habilitar el envío de cookies u otras credenciales con la solicitud
 }));
 db.initDB();
 
